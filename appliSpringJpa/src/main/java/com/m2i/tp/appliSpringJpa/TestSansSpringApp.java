@@ -12,7 +12,7 @@ import com.m2i.tp.appliSpringJpa.entity.Employe;
 public class TestSansSpringApp {
 
 	public static void main(String[] args) {
-		// classe de démarrage de l'application (sans utiliser spring)
+		// classe de démarrage de l'application (sans utiliser spring) 
 
 		EntityManagerFactory emf  = Persistence.createEntityManagerFactory("appliSpringJpa");
 		//NB: appliSpringJpa configure dans META-INF/persistence.xml
