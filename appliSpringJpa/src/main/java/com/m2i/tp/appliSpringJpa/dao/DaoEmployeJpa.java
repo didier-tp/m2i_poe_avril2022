@@ -18,13 +18,13 @@ public class DaoEmployeJpa implements DaoEmploye{
 
 	@Override
 	public Employe findById(Long code) {
-		return entityManager.find(Employe.class, code);
+		return entityManager.find(Employe.class, code); //SELECT .... WHERE empId=...
 	}
 
 	@Override
 	public List<Employe> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.createQuery("SELECT e FROM Employe e",Employe.class)
+				            .getResultList();
 	}
 
 	@Override
