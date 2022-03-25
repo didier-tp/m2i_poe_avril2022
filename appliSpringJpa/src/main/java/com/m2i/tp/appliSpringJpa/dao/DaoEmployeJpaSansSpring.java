@@ -35,21 +35,34 @@ public class DaoEmployeJpaSansSpring implements DaoEmploye{
 
 	@Override
 	public Employe insertNew(Employe emp) {
-		//en entrée , emp est un nouvel objet employé avec .empId à null (encore inconnu)
-		//déclenche automatiquement INSERT INTO Employe(firstname, ....) VALUES(emp.getFirstname() , ....)
-		entityManager.persist(emp);//.empId n'est normalement plus null si auto-incr
+		try {
+			entityManager.getTransaction().begin();
+			//en entrée , emp est un nouvel objet employé avec .empId à null (encore inconnu)
+			//déclenche automatiquement INSERT INTO Employe(firstname, ....) VALUES(emp.getFirstname() , ....)
+			entityManager.persist(emp);//.empId n'est normalement plus null si auto-incr
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw new RuntimeException("echec insertNew(employe)");
+		}
 		return emp; //on retourne l'objet modifié (avec .empId non null)
 	}
 
 	@Override
 	public Employe update(Employe emp) {
-		return entityManager.merge(emp);//déclenche automatiquement UPDATE Employe set .... WHERE idEmp=code
+		entityManager.getTransaction().begin();
+		entityManager.merge(emp);//déclenche automatiquement UPDATE Employe set .... WHERE idEmp=code
+		entityManager.getTransaction().commit();//à peaufiner via try/catch
+		return emp;
 	}
 
 	@Override
 	public void deleteById(long code) {
+		entityManager.getTransaction().begin();
 		Employe empAsupprimer = entityManager.find(Employe.class, code);
 		entityManager.remove(empAsupprimer);//déclenche automatiquement DELETE FROM Employe WHERE idEmp=code
+		entityManager.getTransaction().commit(); //à peaufiner via try/catch
 	}
 
 	
