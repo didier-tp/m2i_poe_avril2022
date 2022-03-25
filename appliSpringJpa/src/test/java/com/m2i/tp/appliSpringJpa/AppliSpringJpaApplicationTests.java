@@ -23,11 +23,11 @@ class AppliSpringJpaApplicationTests {
 	
 	
 	@Test 
-	public void findEmployeWithNameBeginBy() {
+	public void testFindEmployeWithNameBeginBy() {
 		System.out.println("Liste des employes dont le nom commence par A :");
 		List<Employe> employes = daoEmploye.findEmployeWithNameBeginBy("A");
 		for(Employe emp : employes) {
-			System.out.println(emp);
+			System.out.println("\t" +emp);
 		}
 	}
 	

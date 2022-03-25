@@ -65,7 +65,12 @@ public class DaoEmployeJpa implements DaoEmploye{
 
 	@Override
 	public List<Employe> findEmployeWithNameBeginBy(String debutNom) {
+		/*
 		return entityManager.createQuery("SELECT e FROM Employe e WHERE e.lastname LIKE :debut",Employe.class)
+	            .setParameter("debut", debutNom+"%")
+				.getResultList();
+		*/
+		return entityManager.createNamedQuery("Employe.findEmployeWithNameBeginBy",Employe.class)
 	            .setParameter("debut", debutNom+"%")
 				.getResultList();
 	}
