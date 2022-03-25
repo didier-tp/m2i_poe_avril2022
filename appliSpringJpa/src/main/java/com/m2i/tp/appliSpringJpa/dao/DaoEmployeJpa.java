@@ -5,8 +5,23 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.m2i.tp.appliSpringJpa.entity.Employe;
 
+
+/*
+ * Cette version du DAO sera utilisé par Spring+JPA
+ * et spring va initialiser automatiquement le entityManager
+ * grace à l'annotation @PersistenceContext.
+ * 
+ * Spring va aussi déclencher automatiquement des commit/rollback
+ * si on place @Transactional sur la classe ou une méthode
+ */
+
+@Component //ou @Repository //pour prise en charge par framework spring
+@Transactional //pour commit/rollback automatique
 public class DaoEmployeJpa implements DaoEmploye{
 	
 	//NB: @PersistenceContext permet d'initialiser l'objet technique 
