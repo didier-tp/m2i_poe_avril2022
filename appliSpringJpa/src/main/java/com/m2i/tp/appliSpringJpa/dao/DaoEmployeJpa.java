@@ -36,11 +36,7 @@ public class DaoEmployeJpa implements DaoEmploye{
 		return entityManager.find(Employe.class, code); //SELECT .... WHERE empId=...
 	}
 
-	@Override
-	public List<Employe> findAll() {
-		return entityManager.createQuery("SELECT e FROM Employe e",Employe.class)
-				            .getResultList();
-	}
+	
 
 	@Override
 	public Employe insertNew(Employe emp) {
@@ -59,6 +55,19 @@ public class DaoEmployeJpa implements DaoEmploye{
 	public void deleteById(long code) {
 		Employe empAsupprimer = entityManager.find(Employe.class, code);
 		entityManager.remove(empAsupprimer);//déclenche automatiquement DELETE FROM Employe WHERE idEmp=code
+	}
+	
+	@Override
+	public List<Employe> findAll() {
+		return entityManager.createQuery("SELECT e FROM Employe e",Employe.class)
+				            .getResultList();
+	}
+
+	@Override
+	public List<Employe> findEmployeWithNameBeginBy(String debutNom) {
+		return entityManager.createQuery("SELECT e FROM Employe e WHERE e.lastname LIKE :debut",Employe.class)
+	            .setParameter("debut", debutNom+"%")
+				.getResultList();
 	}
 
 	

@@ -21,6 +21,16 @@ class AppliSpringJpaApplicationTests {
 	//dans ce projet , seule la classe DaoEmployeJpa correspond à ce critère
 	private DaoEmploye daoEmploye;
 	
+	
+	@Test 
+	public void findEmployeWithNameBeginBy() {
+		System.out.println("Liste des employes dont le nom commence par A :");
+		List<Employe> employes = daoEmploye.findEmployeWithNameBeginBy("A");
+		for(Employe emp : employes) {
+			System.out.println(emp);
+		}
+	}
+	
 	@Test 
 	public void testAvecSpring() {
 		//séquence de test idéale:

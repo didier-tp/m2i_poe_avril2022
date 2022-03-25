@@ -65,5 +65,11 @@ public class DaoEmployeJpaSansSpring implements DaoEmploye{
 		entityManager.getTransaction().commit(); //à peaufiner via try/catch
 	}
 
+	@Override
+	public List<Employe> findEmployeWithNameBeginBy(String debutNom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

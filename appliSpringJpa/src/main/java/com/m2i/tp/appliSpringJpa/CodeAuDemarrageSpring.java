@@ -24,10 +24,12 @@ public class CodeAuDemarrageSpring {
 		//Employe emp1 = new Employe(null,"prenom1","Nom","0102030405","jean.Bon@xyz.com","login","pwd");
 		//daoEmploye.insertNew(emp1);
 		
+		/*
 		List<Employe> employes = daoEmploye.findAll();
 		for(Employe emp : employes) {
 			System.out.println(emp);
 		}
+		*/
 	}
 
 }

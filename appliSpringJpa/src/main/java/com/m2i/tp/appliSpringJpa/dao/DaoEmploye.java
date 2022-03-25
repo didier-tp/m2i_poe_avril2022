@@ -14,6 +14,7 @@ import com.m2i.tp.appliSpringJpa.entity.Employe;
 public interface DaoEmploye {
      Employe findById(Long code);
      List<Employe> findAll();
+     List<Employe> findEmployeWithNameBeginBy(String debutNom);
      //...
      //Employe save(Employe emp); //dans springData au sens saveOrUpdate
      Employe insertNew(Employe emp); //en retour objet sauvegardé avec clef primaire connue (auto-incr)
