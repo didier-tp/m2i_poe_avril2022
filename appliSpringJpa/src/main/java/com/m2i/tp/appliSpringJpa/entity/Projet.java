@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-//@Entity
+@Entity
 public class Projet {
 	
 	@Id //@Id pour dire que code est l'identifiant (primary key)

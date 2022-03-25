@@ -20,16 +20,10 @@ import com.m2i.tp.appliSpringJpa.entity.Phase;
  * si on place @Transactional sur la classe ou une méthode
  */
 
-//@Component //ou @Repository //pour prise en charge par framework spring
+@Component //ou @Repository //pour prise en charge par framework spring
 @Transactional //pour commit/rollback automatique
-public class DaoPhaseJpa implements DaoPhase{
+public class DaoPhaseJpa extends DaoJpa<Phase> implements DaoPhase{
 	
-	//NB: @PersistenceContext permet d'initialiser l'objet technique 
-	//entityManager à partir d'une configuration
-	//  src/main/resources/META-INF/persistence.xml 
-	//  ou bien config spring equivalente dans src/main/resources/application.properties
-	@PersistenceContext
-	private EntityManager entityManager;
 
 	@Override
 	public Phase findById(Long code) {
@@ -37,32 +31,11 @@ public class DaoPhaseJpa implements DaoPhase{
 	}
 
 	
-
-	@Override
-	public Phase insertNew(Phase p) {
-		//en entrée , emp est un nouvel objet employé avec .empId à null (encore inconnu)
-		//déclenche automatiquement INSERT INTO Phase(firstname, ....) VALUES(emp.getFirstname() , ....)
-		entityManager.persist(p);//.empId n'est normalement plus null si auto-incr
-		return p; //on retourne l'objet modifié (avec .empId non null)
-	}
-
-	@Override
-	public Phase update(Phase p) {
-		return entityManager.merge(p);//déclenche automatiquement UPDATE Phase set .... WHERE code=code
-	}
-
-	@Override
-	public void deleteById(long code) {
-		Phase pAsupprimer = entityManager.find(Phase.class, code);
-		entityManager.remove(pAsupprimer);//déclenche automatiquement DELETE FROM Phase WHERE code=code
-	}
-	
 	@Override
 	public List<Phase> findAll() {
 		return entityManager.createQuery("SELECT p FROM Phase p",Phase.class)
 				            .getResultList();
 	}
 
-	
 	
 }

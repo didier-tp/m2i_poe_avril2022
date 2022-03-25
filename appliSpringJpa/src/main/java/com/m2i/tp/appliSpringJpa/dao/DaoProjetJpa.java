@@ -20,16 +20,11 @@ import com.m2i.tp.appliSpringJpa.entity.Projet;
  * si on place @Transactional sur la classe ou une méthode
  */
 
-//@Component //ou @Repository //pour prise en charge par framework spring
+@Component //ou @Repository //pour prise en charge par framework spring
 @Transactional //pour commit/rollback automatique
-public class DaoProjetJpa implements DaoProjet{
+public class DaoProjetJpa extends DaoJpa<Projet> implements DaoProjet{
 	
-	//NB: @PersistenceContext permet d'initialiser l'objet technique 
-	//entityManager à partir d'une configuration
-	//  src/main/resources/META-INF/persistence.xml 
-	//  ou bien config spring equivalente dans src/main/resources/application.properties
-	@PersistenceContext
-	private EntityManager entityManager;
+	
 
 	@Override
 	public Projet findById(Long code) {
@@ -37,25 +32,6 @@ public class DaoProjetJpa implements DaoProjet{
 	}
 
 	
-
-	@Override
-	public Projet insertNew(Projet p) {
-		//en entrée , emp est un nouvel objet employé avec .empId à null (encore inconnu)
-		//déclenche automatiquement INSERT INTO Projet(firstname, ....) VALUES(emp.getFirstname() , ....)
-		entityManager.persist(p);//.empId n'est normalement plus null si auto-incr
-		return p; //on retourne l'objet modifié (avec .empId non null)
-	}
-
-	@Override
-	public Projet update(Projet p) {
-		return entityManager.merge(p);//déclenche automatiquement UPDATE Projet set .... WHERE code=code
-	}
-
-	@Override
-	public void deleteById(long code) {
-		Projet pAsupprimer = entityManager.find(Projet.class, code);
-		entityManager.remove(pAsupprimer);//déclenche automatiquement DELETE FROM Projet WHERE code=code
-	}
 	
 	@Override
 	public List<Projet> findAll() {
