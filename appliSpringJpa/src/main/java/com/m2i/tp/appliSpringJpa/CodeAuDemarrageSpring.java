@@ -21,8 +21,8 @@ public class CodeAuDemarrageSpring {
 	
 	@PostConstruct //appelé automatiquement après la prise en compte de @Autowired
 	public void testAvecSpring() {
-		Employe emp1 = new Employe(null,"prenom1","Nom","0102030405","jean.Bon@xyz.com","login","pwd");
-		daoEmploye.insertNew(emp1);
+		//Employe emp1 = new Employe(null,"prenom1","Nom","0102030405","jean.Bon@xyz.com","login","pwd");
+		//daoEmploye.insertNew(emp1);
 		
 		List<Employe> employes = daoEmploye.findAll();
 		for(Employe emp : employes) {
