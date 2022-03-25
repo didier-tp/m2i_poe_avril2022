@@ -11,15 +11,8 @@ import com.m2i.tp.appliSpringJpa.entity.Employe;
  * héritant de RuntimeException (ex: JpaException)
  */
 
-public interface DaoEmploye {
-     Employe findById(Long code);
-     List<Employe> findAll();
-     List<Employe> findEmployeWithNameBeginBy(String debutNom);
-     //...
-     //Employe save(Employe emp); //dans springData au sens saveOrUpdate
-     Employe insertNew(Employe emp); //en retour objet sauvegardé avec clef primaire connue (auto-incr)
-     Employe update(Employe emp);
-     
-     void deleteById(long code); 
+public interface DaoEmploye extends Dao<Employe> {
+ 
+     List<Employe> findEmployeWithNameBeginBy(String debutNom); 
      //...
 }
