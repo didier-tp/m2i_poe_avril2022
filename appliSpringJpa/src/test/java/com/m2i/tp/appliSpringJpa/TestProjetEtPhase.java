@@ -4,13 +4,16 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.m2i.tp.appliSpringJpa.dao.DaoEmploye;
 import com.m2i.tp.appliSpringJpa.dao.DaoPhase;
 import com.m2i.tp.appliSpringJpa.dao.DaoProjet;
+import com.m2i.tp.appliSpringJpa.entity.Employe;
 import com.m2i.tp.appliSpringJpa.entity.Phase;
 import com.m2i.tp.appliSpringJpa.entity.Projet;
 
@@ -23,6 +26,9 @@ class TestProjetEtPhase {
 	
 	@Autowired 
 	private DaoPhase daoPhase;
+	
+	@Autowired 
+	private DaoEmploye daoEmploye;
 	
 	public static Date dateFromString(String sDate) {
 		Date d=null;
@@ -80,6 +86,19 @@ class TestProjetEtPhase {
 		}
 		
 		daoProjet.deleteById(projetB.getCode());//avec suppression des phases en cascade
+		
+		Employe emp1 = new Employe(null,"prenom1","Nom","0102030405","jean.Bon@xyz.com","login1","pwd1");
+		daoEmploye.insertNew(emp1);
+		phase_a1.addEmploye(emp1);
+		
+		Employe emp2 = new Employe(null,"prenom2","Nom2","0102030405","p.n@xyz.com","login2","pwd2");
+		daoEmploye.insertNew(emp2);
+		phase_a1.addEmploye(emp2);
+		
+		daoPhase.update(phase_a1);//sauvegarder en base le lien entre phase_a1 et les employés ajoutés
+		
+        List<Employe> employesPhase_a1 = daoPhase.findEmployesOfPhase(phase_a1.getCode());
+        System.out.println("employesPhase_a1="+employesPhase_a1);
 		
 	}
 	

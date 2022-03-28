@@ -2,6 +2,7 @@ package com.m2i.tp.appliSpringJpa.dao;
 
 import java.util.List;
 
+import com.m2i.tp.appliSpringJpa.entity.Employe;
 import com.m2i.tp.appliSpringJpa.entity.Phase;
 
 /*
@@ -14,4 +15,5 @@ import com.m2i.tp.appliSpringJpa.entity.Phase;
 public interface DaoPhase extends Dao<Phase>{
     
      List<Phase> findPhasesByProject(Long codeProjet);
+     List<Employe> findEmployesOfPhase(Long code_phase);
 }

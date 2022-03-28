@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.m2i.tp.appliSpringJpa.entity.Employe;
 import com.m2i.tp.appliSpringJpa.entity.Phase;
 
 
@@ -43,6 +44,15 @@ public class DaoPhaseJpa extends DaoJpa<Phase> implements DaoPhase{
 		return entityManager.createQuery("SELECT p FROM Phase p WHERE p.projet.code = :codeP",Phase.class)
 	            .setParameter("codeP", codeProjet)
 	            .getResultList();
+	}
+
+
+	@Override
+	public List<Employe> findEmployesOfPhase(Long code_phase) {
+		return entityManager.createNamedQuery("Phase.findEmployesOfPhase", Employe.class)
+				 .setParameter("codePhase", code_phase)
+				 .getResultList();
+				  
 	}
 
 	

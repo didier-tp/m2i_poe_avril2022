@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,6 +24,8 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
+@NamedQuery(name = "Phase.findEmployesOfPhase" , 
+           query = "SELECT e FROM Phase p JOIN p.employes e WHERE p.code = :codePhase")
 public class Phase {
 	
 	@Id //@Id pour dire que code est l'identifiant (primary key)
