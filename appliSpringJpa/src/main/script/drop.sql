@@ -34,3 +34,7 @@ alter table phase drop foreign key FK183cbjgh92yt6ho2x5h9vnd4d;
 drop table if exists employe;
 drop table if exists phase;
 drop table if exists projet;
+alter table phase drop foreign key FK183cbjgh92yt6ho2x5h9vnd4d;
+drop table if exists employe;
+drop table if exists phase;
+drop table if exists projet;

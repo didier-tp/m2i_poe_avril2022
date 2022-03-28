@@ -3,6 +3,7 @@ package com.m2i.tp.appliSpringJpa.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,7 +35,10 @@ public class Projet {
 	private Double montant;
 	
 	//la relation inverse vis à vis de @ManyToOne (facultatif)
-	@OneToMany(mappedBy = "projet", fetch = FetchType.LAZY) //valeur de mappedBy = nom java de la relation inverses
+	@OneToMany(mappedBy = "projet", fetch = FetchType.LAZY ,
+			   cascade = CascadeType.REMOVE) //valeur de mappedBy = nom java de la relation inverses
+	//CascadeType.REMOVE (cascade-delete ici car composition dans diagramme UML)
+	//si on supprime un projet , cela supprimera automatiquement toutes les phases du projet
 	private List<Phase> phases;
 	
 	

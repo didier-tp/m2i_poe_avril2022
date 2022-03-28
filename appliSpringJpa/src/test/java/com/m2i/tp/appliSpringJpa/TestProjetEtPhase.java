@@ -79,6 +79,8 @@ class TestProjetEtPhase {
 			System.out.println("\t" + p);
 		}
 		
+		daoProjet.deleteById(projetB.getCode());//avec suppression des phases en cascade
+		
 	}
 	
 
