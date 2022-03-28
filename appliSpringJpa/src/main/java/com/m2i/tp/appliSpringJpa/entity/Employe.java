@@ -1,15 +1,23 @@
 package com.m2i.tp.appliSpringJpa.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQuery(name="Employe.findEmployeWithNameBeginBy",
             query="SELECT e FROM Employe e WHERE e.lastname LIKE :debut")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type_employe" , discriminatorType = DiscriminatorType.STRING)
+//@DiscriminatorValue("Employe") // valeur par defaut = nom classe courante
 public class Employe {
 	
    @Column(name="EMP_ID")

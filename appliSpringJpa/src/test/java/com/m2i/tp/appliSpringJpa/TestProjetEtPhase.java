@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.m2i.tp.appliSpringJpa.dao.DaoEmploye;
 import com.m2i.tp.appliSpringJpa.dao.DaoPhase;
 import com.m2i.tp.appliSpringJpa.dao.DaoProjet;
+import com.m2i.tp.appliSpringJpa.entity.ChefProjet;
 import com.m2i.tp.appliSpringJpa.entity.Employe;
 import com.m2i.tp.appliSpringJpa.entity.Phase;
 import com.m2i.tp.appliSpringJpa.entity.Projet;
@@ -94,6 +95,16 @@ class TestProjetEtPhase {
 		Employe emp2 = new Employe(null,"prenom2","Nom2","0102030405","p.n@xyz.com","login2","pwd2");
 		daoEmploye.insertNew(emp2);
 		phase_a1.addEmploye(emp2);
+		
+		ChefProjet cp1 = new ChefProjet(null,"prenom3","Nom3","0102030405","p3.n3@xyz.com","login3","pwd3");
+		cp1.setMethodologies("SCRUM");
+		daoEmploye.insertNew(cp1);
+		Employe cp1ReluEnTantQueEmployeQuelconque = daoEmploye.findById(cp1.getEmpId());
+		if(cp1ReluEnTantQueEmployeQuelconque instanceof ChefProjet) {
+			ChefProjet cp1Relu = (ChefProjet) cp1ReluEnTantQueEmployeQuelconque;
+			System.out.println("cp1Relu=" + cp1Relu);
+			System.out.println("methodologies=" + cp1Relu.getMethodologies());
+		}
 		
 		daoPhase.update(phase_a1);//sauvegarder en base le lien entre phase_a1 et les employés ajoutés
 		

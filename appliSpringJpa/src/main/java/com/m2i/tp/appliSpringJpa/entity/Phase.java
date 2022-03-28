@@ -24,6 +24,11 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor
+
+//NB: la requete exprimée ici est du JPQL (JPA query language) et pas du SQL ordinaire
+//pas besoin d'indiquer ON ... = .... car lien déjà exprimé près de @ManyToMany
+//"JOIN p.employes e" est à lire comme "e est un alias sur une instance d'un membre
+//de la collection des employes reliés (par jointure) à la phase p"
 @NamedQuery(name = "Phase.findEmployesOfPhase" , 
            query = "SELECT e FROM Phase p JOIN p.employes e WHERE p.code = :codePhase")
 public class Phase {
