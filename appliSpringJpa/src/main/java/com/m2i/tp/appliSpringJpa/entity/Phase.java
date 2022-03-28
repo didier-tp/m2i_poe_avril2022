@@ -12,7 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Phase {
 	
 	@Id //@Id pour dire que code est l'identifiant (primary key)
@@ -42,9 +47,7 @@ public class Phase {
 	private Projet projet;
 	
 
-	public Phase() {
-		super();
-	}
+	
 
 	public Phase(Long code, String label, String description, Date dateDebut, Date dateFinPrevue, Date dateFinEffective,
 			Double proportionProjet, Projet projet) {
@@ -66,69 +69,6 @@ public class Phase {
 				+ proportionProjet + "]";
 	}
 
-	public Long getCode() {
-		return code;
-	}
-
-	public void setCode(Long code) {
-		this.code = code;
-	}
-
-	public String getLabel() {
-		return label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Date getDateDebut() {
-		return dateDebut;
-	}
-
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-
-	public Date getDateFinPrevue() {
-		return dateFinPrevue;
-	}
-
-	public void setDateFinPrevue(Date dateFinPrevue) {
-		this.dateFinPrevue = dateFinPrevue;
-	}
-
-	public Date getDateFinEffective() {
-		return dateFinEffective;
-	}
-
-	public void setDateFinEffective(Date dateFinEffective) {
-		this.dateFinEffective = dateFinEffective;
-	}
-
-	public Double getProportionProjet() {
-		return proportionProjet;
-	}
-
-	public void setProportionProjet(Double proportionProjet) {
-		this.proportionProjet = proportionProjet;
-	}
-
-	public Projet getProjet() {
-		return projet;
-	}
-
-	public void setProjet(Projet projet) {
-		this.projet = projet;
-	}
 	
 	
 

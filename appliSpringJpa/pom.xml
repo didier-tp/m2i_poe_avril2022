@@ -20,6 +20,26 @@
 	</properties>
 	<dependencies>
 	
+	
+	<!-- lombok sert à générer automatiquement les get/set et toString() 
+         pas de configuration supplémentaire absolument nécessaire dans intellij
+         pour que lombok fonctionne bien dans eclipse:
+           1) repérer le chemin menant à lombok.jar
+              $HOME\.m2\repository\org\projectlombok\lombok\1.18.22\lombok.jar
+           2) effectuer un double click sur lombok.jar 
+              (ou bien java -jar lombok.jar)
+           3) spécifier si besoin le chemin menant à eclipse
+           4) cliquer sur "Install" de façon à modifier eclipse.ini
+           5) arrêter et redémarrer eclipse
+           6) activer le menu Project/clean
+      -->
+	   <dependency>
+    		<groupId>org.projectlombok</groupId>
+    		<artifactId>lombok</artifactId>
+    		<version>1.18.22</version>
+    		<scope>provided</scope>
+	  </dependency>
+	   
 	   
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
