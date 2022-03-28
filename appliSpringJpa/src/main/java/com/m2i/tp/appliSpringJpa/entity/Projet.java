@@ -1,12 +1,15 @@
 package com.m2i.tp.appliSpringJpa.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -30,7 +33,19 @@ public class Projet {
 	
 	private Double montant;
 	
+	//la relation inverse vis à vis de @ManyToOne (facultatif)
+	@OneToMany(mappedBy = "projet", fetch = FetchType.LAZY) //valeur de mappedBy = nom java de la relation inverses
+	private List<Phase> phases;
 	
+	
+
+	public List<Phase> getPhases() {
+		return phases;
+	}
+
+	public void setPhases(List<Phase> phases) {
+		this.phases = phases;
+	}
 
 	public Projet() {
 		super();

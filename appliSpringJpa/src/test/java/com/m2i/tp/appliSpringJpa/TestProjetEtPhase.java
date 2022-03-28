@@ -69,6 +69,15 @@ class TestProjetEtPhase {
 		}
 		
 		//...
+		//Projet projetBrelu = daoProjet.findById(projetB.getCode());
+		Projet projetBrelu = daoProjet.findProjectWithPhases(projetB.getCode());
+		System.out.println("projetBrelu="+projetBrelu.toString());
+		//Attention : les phases reliées au projet via @OneToMany
+		//ne sont toujours remontées en mémoire (en mode lazy)
+		//Potentielle exception (lazyInitializationException)
+		for(Phase p : projetBrelu.getPhases()) {
+			System.out.println("\t" + p);
+		}
 		
 	}
 	
