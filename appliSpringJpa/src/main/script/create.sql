@@ -91,3 +91,10 @@ create table projet (code bigint not null auto_increment, date_debut date, date_
 alter table phase add constraint FK183cbjgh92yt6ho2x5h9vnd4d foreign key (code_projet) references projet (code);
 alter table phase_employe add constraint FKfs6vtxxx4ovecspxrjehb339l foreign key (emp_id) references employe (emp_id);
 alter table phase_employe add constraint FKmmplemy08aik3gp8lhhho41xm foreign key (code_phase) references phase (code);
+create table employe (type_employe varchar(31) not null, emp_id bigint not null auto_increment, email varchar(255), firstname varchar(255), lastname varchar(255), login varchar(32), password varchar(255), phone_number varchar(255), methodologies varchar(255), primary key (emp_id)) engine=InnoDB;
+create table phase (code bigint not null auto_increment, date_debut date, date_fin_effective date, date_fin_prevue date, description varchar(255), label varchar(255), proportion_projet double precision, code_projet bigint, primary key (code)) engine=InnoDB;
+create table phase_employe (code_phase bigint not null, emp_id bigint not null) engine=InnoDB;
+create table projet (code bigint not null auto_increment, date_debut date, date_fin date, description varchar(255), montant double precision, nom varchar(255), primary key (code)) engine=InnoDB;
+alter table phase add constraint FK183cbjgh92yt6ho2x5h9vnd4d foreign key (code_projet) references projet (code);
+alter table phase_employe add constraint FKfs6vtxxx4ovecspxrjehb339l foreign key (emp_id) references employe (emp_id);
+alter table phase_employe add constraint FKmmplemy08aik3gp8lhhho41xm foreign key (code_phase) references phase (code);
