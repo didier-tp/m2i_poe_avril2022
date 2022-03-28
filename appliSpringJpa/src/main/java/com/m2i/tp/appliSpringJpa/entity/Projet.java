@@ -43,6 +43,12 @@ public class Projet {
 	
 	
 
+	@Override
+	public String toString() {
+		return "Projet [code=" + code + ", nom=" + nom + ", description=" + description + ", dateDebut=" + dateDebut
+				+ ", dateFin=" + dateFin + ", montant=" + montant + "]";
+	}
+
 	public List<Phase> getPhases() {
 		return phases;
 	}
@@ -65,11 +71,7 @@ public class Projet {
 		this.montant = montant;
 	}
 
-	@Override
-	public String toString() {
-		return "Projet [code=" + code + ", nom=" + nom + ", description=" + description + ", dateDebut=" + dateDebut
-				+ ", dateFin=" + dateFin + ", montant=" + montant + "]";
-	}
+	
 
 	public Long getCode() {
 		return code;
