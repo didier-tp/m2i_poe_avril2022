@@ -1,16 +1,18 @@
 package com.m2i.tp.appliSpringJpa.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQuery(name="Employe.findEmployeWithNameBeginBy",
@@ -45,6 +47,11 @@ public class Employe {
    private String login;
    
    private String password;
+   
+   @OneToOne(cascade = CascadeType.ALL) //proche du @ManyToOne
+   @JoinColumn(name = "id_adresse" , unique = true  ) 
+   //unique = true  pour préciser qu'une adresse n'est pas partagée
+   private Adresse adressePrincipale;//=null par défaut
    
    //constructeur par defaut obligatoire pour le fonctionnement de jpa/hibernate
 public Employe() {
@@ -127,6 +134,16 @@ public String getPassword() {
 
 public void setPassword(String password) {
 	this.password = password;
+}
+
+
+public Adresse getAdressePrincipale() {
+	return adressePrincipale;
+}
+
+
+public void setAdressePrincipale(Adresse adressePrincipale) {
+	this.adressePrincipale = adressePrincipale;
 }
 
 

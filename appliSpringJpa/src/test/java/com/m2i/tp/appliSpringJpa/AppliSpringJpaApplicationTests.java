@@ -2,13 +2,12 @@ package com.m2i.tp.appliSpringJpa;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.m2i.tp.appliSpringJpa.dao.DaoEmploye;
+import com.m2i.tp.appliSpringJpa.entity.Adresse;
 import com.m2i.tp.appliSpringJpa.entity.Employe;
 
 @SpringBootTest
@@ -37,6 +36,9 @@ class AppliSpringJpaApplicationTests {
 		//1. créer une nouvelle chose
 		
 		Employe emp1 = new Employe(null,"prenom1","Nom","0102030405","jean.Bon@xyz.com","login","pwd");
+		Adresse adr1 = new Adresse(null,"12 rue Elle","75001","Par ici");
+		emp1.setAdressePrincipale(adr1);
+		
 		daoEmploye.insertNew(emp1);
 		Long idEmp = emp1.getEmpId(); //clef primaire auto incrémentée du nouvel employé ajouté en base
 		
@@ -49,6 +51,7 @@ class AppliSpringJpaApplicationTests {
 		//3. récupérer une entité précise via sa clef primaire et l'afficher
 		Employe emp1Relu = daoEmploye.findById(idEmp);
 		System.out.println("emp1Relu=" + emp1Relu);
+		System.out.println("avec adresse=" + emp1Relu.getAdressePrincipale());
 		
 		
 		//4. modifier les valeurs en mémoire puis en base
@@ -66,7 +69,7 @@ class AppliSpringJpaApplicationTests {
 		Employe emp1Relu3NormalementNull = daoEmploye.findById(idEmp);
 		if(emp1Relu3NormalementNull==null)
 			System.out.println("employe bien supprimé dans la base de données");
-	     
+	    
 	}
 
 }
