@@ -6,6 +6,7 @@ var tableau = [];
 tableau.push(20);
 tableau.push(30);
 tableau.push(40);
+tableau.push(50);
 //en exo:
 //boucle for pour calculer la moyenne
 let somme = 0;
