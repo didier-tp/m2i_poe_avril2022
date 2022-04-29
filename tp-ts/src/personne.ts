@@ -1,4 +1,11 @@
-//à faire en Tp : coder le début d'une classe Personne
+function add(a:number,b:number):number{
+    return a+b;
+}
+
+export function additionner(a:number,b:number):number{
+    console.log(`additionner appelé avec a=${a} et b=${b}`);
+    return add(a,b);
+}
 
 export class Personne {
 

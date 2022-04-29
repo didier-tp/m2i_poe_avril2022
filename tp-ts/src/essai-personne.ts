@@ -1,4 +1,10 @@
-import { Personne } from "./personne";
+import { additionner, Personne } from "./personne";
+
+let somme = additionner(5,6);
+console.log("somme="+somme);
+//somme = add(3,4); //impossible d'importer et appeler add()
+                    //car la fonction add() n'a pas été exportée .
+//console.log("somme="+somme);
 
 try{
     let p1 : Personne ;

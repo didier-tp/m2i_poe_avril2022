@@ -1,7 +1,14 @@
 "use strict";
-//à faire en Tp : coder le début d'une classe Personne
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Personne = void 0;
+exports.Personne = exports.additionner = void 0;
+function add(a, b) {
+    return a + b;
+}
+function additionner(a, b) {
+    console.log(`additionner appelé avec a=${a} et b=${b}`);
+    return add(a, b);
+}
+exports.additionner = additionner;
 class Personne {
     constructor(numero = 0, prenom = "?", nom = "?", _age = 0) {
         this.numero = numero;
