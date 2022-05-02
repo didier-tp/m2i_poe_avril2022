@@ -2,5 +2,10 @@
 <label>ht:</label> <input type="number" [(ngModel)]="ht" /> <br/>
 <label>tauxTva:</label> <input type="number" [(ngModel)]="tauxTva" />  (ex: 20 pour 20%) <br/>
 <button (click)="onCalculTvaTtc()">calculer tva et ttc</button> <br/>
-tva: <span class="enEvidence">{{tva}}</span> <br/>
-ttc: <span class="enEvidence">{{ttc}}</span> <br/>
+<div *ngIf="tva>0"> 
+<!-- <div [style.display]="tva>0 ? 'block' : 'none'">  -->
+<!-- <div [style.visibility]="tva>0 ? 'visible' : 'hidden'"> -->
+    tva: <span class="enEvidence">{{tva}}</span> <br/>
+    ttc: <span class="enEvidence">{{ttc}}</span> <br/>
+</div>
+<p>suite qui va bien</p>
