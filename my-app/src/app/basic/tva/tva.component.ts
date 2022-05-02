@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tva.component.scss']
 })
 export class TvaComponent implements OnInit {
-
+  tabTaux :number[] = [ 5 , 10 , 20 ];
+  
   ht :number = 0;
   tauxTva :number = 20; //en %
   tva :number =0;
