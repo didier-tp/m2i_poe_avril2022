@@ -9,10 +9,10 @@ export class CalculatriceComponent implements OnInit {
 
    a : number =0;
    b : number =0;
-   res : number =0;
+   res : number =0; 
 
    onAddition(){
-     this.res=this.a+this.b;
+     this.res=Number(this.a) + Number(this.b);
    }
 
   constructor() { }
