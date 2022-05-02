@@ -15,6 +15,10 @@ export class CalculatriceComponent implements OnInit {
      this.res=Number(this.a) + Number(this.b);
    }
 
+   onSoustraction(){
+    this.res=Number(this.a) - Number(this.b);
+  }
+
   constructor() { }
 
   ngOnInit(): void {
