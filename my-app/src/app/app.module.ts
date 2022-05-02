@@ -11,6 +11,7 @@ import { TvaComponent } from './basic/tva/tva.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { ConversionComponent } from './basic/conversion/conversion.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ConversionComponent } from './basic/conversion/conversion.component';
     BasicComponent,
     CalculatriceComponent,
     TvaComponent,
-    ConversionComponent
+    ConversionComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
