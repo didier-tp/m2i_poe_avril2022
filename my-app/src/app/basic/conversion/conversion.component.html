@@ -1,0 +1,22 @@
+<p>conversion d'angles (degres , radians)</p>
+<!-- 
+V1<br/> 
+<label>angleDegre :</label> <input [(ngModel)]="angleDegre"  /> <br/>
+<label>angleRadians :</label> <input  [(ngModel)]="angleRadian" /> <br/>
+<button (click)="onDegreeToRadian()">convertir degres en radians</button> &nbsp;
+<button (click)="onRadianToDegre()">convertir radians en degres</button>
+<hr/>
+-->
+
+<input [(ngModel)]="angleDegre" (input)="onDegreeToRadian()"
+       [ngClass]="aiguOuObtuOuAutre()" /> degres 
+= <input  [(ngModel)]="angleRadian" (input)="onRadianToDegre()" /> radians .  
+<hr/>
+Angles classiques/remarquables:
+<select [(ngModel)]="angleDegre" (change)="onDegreeToRadian()" >
+    <option *ngFor="let ad of anglesClassiquesDegres" [ngValue]="ad">{{ad}} degres</option>
+</select>
+&nbsp;
+<select [(ngModel)]="angleRadian" (change)="onRadianToDegre()" >
+    <option *ngFor="let ar of anglesClassiquesRadians" [ngValue]="ar">{{ar}} radians</option>
+</select>
