@@ -1,0 +1,8 @@
+<p>login works!</p>
+
+<label>username:</label><input [(ngModel)]="login.username" required pattern="^[a-zA-Z].+" /><br/>
+<label>password:</label><input [(ngModel)]="login.password" required minlength="3"/><br/>
+<label>roles:</label><input [(ngModel)]="login.roles" required /><br/>
+<button (click)="onLogin()">login</button><br/>
+
+{{message}}

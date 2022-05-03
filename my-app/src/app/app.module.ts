@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ConversionComponent } from './basic/conversion/conversion.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DeviseComponent } from './devise/devise.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DeviseComponent } from './devise/devise.component';
     TvaComponent,
     ConversionComponent,
     WelcomeComponent,
-    DeviseComponent
+    DeviseComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
