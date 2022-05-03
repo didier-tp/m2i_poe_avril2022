@@ -8,16 +8,28 @@ import { Devise } from '../common/data/devise';
 })
 export class DeviseComponent implements OnInit {
 
+  cloneDevise(d:Devise){
+    return JSON.parse(JSON.stringify(d));
+  }
+
   tabDevises : Devise[] = [];
 
   selectedDevise : Devise | undefined;
 
+  //[(ngModel)]="deviseTemp.code" , ....
+  deviseTemp : Devise = new Devise();
+
   message : string ="";
+
+  onUpdate(){
+    //...
+  }
 
   //fonction évenementielle à appeler lorsque l'on
   //va sélectionner une des lignes du tableau
   onSelectDevise(d : Devise){
       this.selectedDevise = d;
+      this.deviseTemp = this.cloneDevise(this.selectedDevise);
       this.message = "devise selectionnée = " + JSON.stringify(this.selectedDevise);
   }
 
