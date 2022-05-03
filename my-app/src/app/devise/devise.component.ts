@@ -22,7 +22,11 @@ export class DeviseComponent implements OnInit {
   message : string ="";
 
   onUpdate(){
-    //...
+    if(this.selectedDevise != undefined){
+         this.selectedDevise.code = this.deviseTemp.code;
+         this.selectedDevise.name = this.deviseTemp.name;
+         this.selectedDevise.change = this.deviseTemp.change;
+    }
   }
 
   //fonction évenementielle à appeler lorsque l'on
