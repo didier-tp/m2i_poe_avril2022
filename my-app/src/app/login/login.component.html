@@ -1,12 +1,28 @@
 <p>login works!</p>
 <form #formLogin="ngForm">
-    <label>username:</label>
-       <input name="username" [(ngModel)]="login.username" required pattern="^[a-zA-Z].+" /><br/>
-    <label>password:</label>
-       <input name="password" [(ngModel)]="login.password" required minlength="3"/><br/>
-    <label>roles:</label>
-       <input name="roles" [(ngModel)]="login.roles" required /><br/>
-    <button (click)="onLogin()" class="btn-primary" [disabled]="!formLogin.form.valid"  >
-        login <i class="bi-person"></i></button><br/>
+   <div class="row form-group">
+    <label class="col-sm-3 text-sm-end form-label">username:</label>
+    <div class="col-sm-9">
+       <input name="username" class="form-control  mb-1" [(ngModel)]="login.username" required pattern="^[a-zA-Z].+" />
+   </div>
+  </div>
+  <div class="row form-group">
+       <label class="col-sm-3 text-sm-end form-label">password:</label>
+       <div class="col-sm-9">
+           <input name="password" class="form-control  mb-1" [(ngModel)]="login.password" required minlength="3"/>
+       </div>
+   </div>
+   <div class="row form-group">
+        <label class="col-sm-3 text-sm-end form-label">roles:</label>
+        <div class="col-sm-9">
+          <input name="roles" class="form-control mb-1" [(ngModel)]="login.roles" required />
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-9 offset-sm-3">
+            <button (click)="onLogin()" class="btn-primary" [disabled]="!formLogin.form.valid"  >
+                login <i class="bi-person"></i></button>
+       </div> 
+    </div>
 </form>
 {{message}}
