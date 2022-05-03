@@ -35,10 +35,11 @@ export class DeviseComponent implements OnInit {
 
   //fonction évenementielle à appeler lorsque l'on
   //va sélectionner une des lignes du tableau
-  onSelectDevise(d : Devise){
+  onSelectDevise(d : Devise , i : number){
     //NB: d:Devise est passé par référence (comportement de java/javascript)
     //et donc ici d et this.selectedDevise référencent
     //directement un des objets du tableau this.tabDevises
+    console.log("indice de la devise selectionnee=" + i);
       this.selectedDevise = d;
       //via un clonage explicite , this.deviseTemp est une copie
       //indépendante de this.selectedDevise (et pas une référence sur l'objet original)
