@@ -6,6 +6,7 @@
        <input name="password" [(ngModel)]="login.password" required minlength="3"/><br/>
     <label>roles:</label>
        <input name="roles" [(ngModel)]="login.roles" required /><br/>
-    <button (click)="onLogin()" [disabled]="!formLogin.form.valid"  >login</button><br/>
+    <button (click)="onLogin()" class="btn-primary" [disabled]="!formLogin.form.valid"  >
+        login <i class="bi-person"></i></button><br/>
 </form>
 {{message}}
