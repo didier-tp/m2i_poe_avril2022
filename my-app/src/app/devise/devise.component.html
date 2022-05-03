@@ -1,10 +1,11 @@
-<p>devise works!</p>
-<!-- afficher tabDevises sous forme de tableau HTML 
-    gerer l'évenement click sur une ligne du tableau 
-    essayer de mettre en évidence la ligne sélectionnée dans le tableau
-    -->
-<!--
-    afficher le message préparé coté .ts
-    (ex: la devise { "code" : "EUR" , ...} est sélectionnée )
--->
+<h3>Liste des devises</h3>
+<table border="1">
+    <tr><th>code</th><th>name</th><th>change</th></tr>
+    <tr *ngFor="let d of tabDevises"
+        (click)="onSelectDevise(d)"
+        [class.selected]="d==selectedDevise">
+        <td>{{d.code}}</td><td>{{d.name}}</td><td>{{d.change}}</td>
+    </tr>
+</table>
 
+message: <b>{{message}}</b>

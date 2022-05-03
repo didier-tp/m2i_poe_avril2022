@@ -1,0 +1,4 @@
+.selected { font-weight: bold; font-style: italic; color : rgb(16, 16, 167)}
+tr > th { background-color:  lightpink;}
+tr:nth-child(2n) > td { background-color: lightcyan;}
+tr:nth-child(2n+1) > td { background-color: lightgrey;}

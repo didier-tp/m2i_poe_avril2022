@@ -8,23 +8,23 @@ import { Devise } from '../common/data/devise';
 })
 export class DeviseComponent implements OnInit {
 
-  //tabDevises de type Devise[]
+  tabDevises : Devise[] = [];
 
-  //selectedDevise de type Devise | undefined
+  selectedDevise : Devise | undefined;
 
-  //message de type string (= "")
+  message : string ="";
 
   //fonction évenementielle à appeler lorsque l'on
   //va sélectionner une des lignes du tableau
-  onSelectDevise(Devise d){
-      //mettre à jour this.selectedDevise
-      // et this.message JSON.stringify(this.selectedDevise)
+  onSelectDevise(d : Devise){
+      this.selectedDevise = d;
+      this.message = "devise selectionnée = " + JSON.stringify(this.selectedDevise);
   }
 
   constructor() {
     //V1 (sans backend), avec des valeurs simulées en mémoire
     this.tabDevises.push(new Devise("EUR","Euro",1));
-    this.tabDevises.push(new Devise("USD","Dolar",1.1));
+    this.tabDevises.push(new Devise("USD","Dollar",1.1));
     this.tabDevises.push(new Devise("GBP","Livre",0.9));
     this.tabDevises.push(new Devise("JPY","Yen",120));
    }
