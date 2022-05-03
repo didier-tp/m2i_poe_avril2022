@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { ConversionComponent } from './basic/conversion/conversion.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { DeviseComponent } from './devise/devise.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     CalculatriceComponent,
     TvaComponent,
     ConversionComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DeviseComponent
   ],
   imports: [
     BrowserModule,
