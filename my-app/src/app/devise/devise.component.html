@@ -19,7 +19,7 @@
   </div> <!-- end of col-sm-5 -->
   <div class="col-sm-7" >
     <div class="card">
-    <div class="card-header text-white bg-primary">devise selectionnée</div>
+    <div class="card-header text-white bg-primary">devise selectionnée ({{mode}})</div>
     <div class="card-body">
     <form #formDevise="ngForm">
         <div class="row form-group">
@@ -42,8 +42,15 @@
         </div><!-- end of row form-group -->
         <div class="row form-group">
             <div class="col-sm-9 offset-sm-3">
-                <button (click)="onUpdate()" class="btn-primary" [disabled]="!formDevise.form.valid"  >
-                    update <i class="bi-save"></i></button>
+                <button (click)="onUpdate()" class="btn-primary" 
+                    [style.visibility]="(mode=='existingOne')?'visible':'hidden'"
+                    [disabled]="!formDevise.form.valid"  >
+                    update <i class="bi-save"></i></button> &nbsp;
+                <button (click)="onNew()" class="btn-primary"> new </button>  &nbsp;
+                <button (click)="onAdd()" [disabled]="!formDevise.form.valid"
+                        [style.visibility]="(mode=='newOne')?'visible':'hidden'" 
+                        class="btn-primary"> add </button> &nbsp;
+                <button (click)="onDelete()" [style.visibility]="(mode=='existingOne')?'visible':'hidden'" class="btn-danger"> delete </button> 
             </div> 
         </div><!-- end of row form-group -->
     </form><!-- end of form -->

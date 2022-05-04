@@ -8,9 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TogglePanelComponent implements OnInit {
 
   @Input()
-  titre:string ="titreParDefaut"
+  titre /*:string*/ ="titreParDefaut"
 
-  toggleP :boolean = false;
+  toggleP /*:boolean*/ = false;
 
   constructor() { }
 

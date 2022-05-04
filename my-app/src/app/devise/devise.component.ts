@@ -19,7 +19,31 @@ export class DeviseComponent implements OnInit {
   //[(ngModel)]="deviseTemp.code" , ....
   deviseTemp : Devise = new Devise();
 
-  message : string ="";
+  message /*: string*/ ="";
+
+  mode : "newOne" | "existingOne" = "newOne";
+
+  onNew(){
+    this.mode="newOne";
+    this.selectedDevise=undefined;
+    this.deviseTemp = new Devise();
+  }
+
+  onAdd(){
+    this.tabDevises.push(this.deviseTemp);
+    this.onNew();
+  }
+
+  onDelete(){
+    if(this.selectedDevise){
+      let indexToDelete = -1;
+      this.tabDevises.forEach((devise,index)=>{if(devise==this.selectedDevise) indexToDelete=index; });
+      if(indexToDelete>=0){
+        this.tabDevises.splice(indexToDelete,1);
+      }
+    }
+    this.onNew();
+  }
 
   onUpdate(){
   //test imposé par typescript sur this.selectedDevise potentiellement undefined
@@ -41,6 +65,7 @@ export class DeviseComponent implements OnInit {
     //directement un des objets du tableau this.tabDevises
     console.log("indice de la devise selectionnee=" + i);
       this.selectedDevise = d;
+      this.mode="existingOne";
       //via un clonage explicite , this.deviseTemp est une copie
       //indépendante de this.selectedDevise (et pas une référence sur l'objet original)
       this.deviseTemp = this.cloneDevise(this.selectedDevise);

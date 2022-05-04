@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class TvaComponent implements OnInit {
   tabTaux :number[] = [ 5 , 10 , 20 ];
   
-  ht :number = 0;
-  tauxTva :number = 20; //en %
-  tva :number =0;
-  ttc :number =0;
+  ht /*:number*/ = 0;
+  tauxTva /*:number*/ = 20; //en %
+  tva /*:number*/ =0;
+  ttc /*:number*/ =0;
 
   onCalculTvaTtc(){
     this.tva = this.ht * this.tauxTva / 100;

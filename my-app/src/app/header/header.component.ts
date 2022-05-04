@@ -9,7 +9,7 @@ import { PreferencesService } from '../common/service/preferences.service';
 export class HeaderComponent implements OnInit {
 
   @Input()
-  titre : string ="titreQuiVaBien";
+  titre /*: string*/ ="titreQuiVaBien";
 
   constructor(public preferencesService : PreferencesService) { 
     //injection de dépendance par constructeur

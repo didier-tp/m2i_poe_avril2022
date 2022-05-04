@@ -16,8 +16,8 @@ export class ConversionComponent implements OnInit {
    PI/2 = 90 degres
   */
 
-  angleDegre : number =0;
-  angleRadian : number =0;
+  angleDegre /*: number*/ =0;
+  angleRadian /*: number*/ =0;
 
   aiguOuObtuOuAutre(){
     return {

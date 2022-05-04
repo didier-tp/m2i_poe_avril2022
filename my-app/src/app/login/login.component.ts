@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   //objet de données pour recueillir les valeurs saisies
   login : Login = new Login();
 
-  message : string =""; 
+  message /*: string*/ =""; 
 
   onLogin(){
     //V1 (sans serveur)

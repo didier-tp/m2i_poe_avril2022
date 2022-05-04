@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculatriceComponent implements OnInit {
 
-   a : number =0;
-   b : number =0;
-   res : number =0; 
+   a /*: number*/ =0;
+   b /*: number*/ =0;
+   res /*: number*/ =0; 
 
    onAddition(){
      this.res=Number(this.a) + Number(this.b);
