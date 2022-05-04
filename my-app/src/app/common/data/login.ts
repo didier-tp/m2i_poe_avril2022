@@ -1,7 +1,7 @@
 export class Login {
     constructor(
-        public username : string ="",
-        public password : string ="",
-        public roles : string="" 
+        public username : string ="userXy",
+        public password : string ="pwdXy",
+        public roles : string="user" 
     ){}
 }

@@ -22,6 +22,9 @@
         <div class="col-sm-9 offset-sm-3">
             <button (click)="onLogin()" class="btn-primary" [disabled]="!formLogin.form.valid"  >
                 login <i class="bi-person"></i></button>
+            &nbsp;
+            <button (click)="onLogout()" class="btn-danger"   >
+                logout </button>
        </div> 
     </div>
 </form>

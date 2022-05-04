@@ -2,4 +2,5 @@
   couleurFond: <select [(ngModel)]="preferencesService.couleurFond">
    <option *ngFor="let c of tabCouleurs">{{c}}</option> 
 </select>
+&nbsp;<span *ngIf="sessionService.connecte">utilisateur connecté:<b>{{sessionService.username}}</b></span>
 </p>

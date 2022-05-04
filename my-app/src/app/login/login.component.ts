@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../common/data/login';
+import { SessionService } from '../common/service/session.service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,18 @@ export class LoginComponent implements OnInit {
     //V1 (sans serveur)
     this.message = "données saisies: " + JSON.stringify(this.login);
     console.log("username="+this.login.username);
+
+    this.sessionService.connecte=true;
+    this.sessionService.username=this.login.username;
     //V2: (avec serveur en backend)
   }
 
-  constructor() { }
+  onLogout(){
+    this.message = "logout done (no more connected)";
+    this.sessionService.connecte=false;
+  }
+
+  constructor( public sessionService : SessionService) { }
 
   ngOnInit(): void {
   }
