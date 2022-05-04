@@ -12,7 +12,7 @@ export class FooterComponent implements OnInit {
 
   tabCouleurs : string[] = [ "white" , "lightgrey" , "lightgreen" , "lightblue"];
 
-  constructor(public preferencesService :PreferencesService) {
+  constructor(public preferencesService :PreferencesService ) {
     //injection de dépendance par constructeur de @Component angular
    }
 
