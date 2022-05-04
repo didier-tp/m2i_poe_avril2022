@@ -55,7 +55,7 @@ export class DeviseComponent implements OnInit {
     this.tabDevises.push(new Devise("JPY","Yen",120));
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
   }
 
 }
