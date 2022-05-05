@@ -10,9 +10,17 @@ import { DeviseService } from '../common/service/devise.service';
 export class ConvertisseurComponent implements OnInit {
 
   tabDevises : Devise[] = [];
+  deviseSource : Devise | undefined;
+  deviseCible : Devise | undefined;
+  montant /*: number*/ = 0;
+  montantConverti /*: number*/ = 0;
 
   constructor(public deviseService : DeviseService) { 
     //injection de dépendance par constructeur
+  }
+
+  onConvertir(){
+    
   }
 
   ngOnInit(): void {

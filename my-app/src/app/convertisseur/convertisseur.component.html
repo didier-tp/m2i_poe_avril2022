@@ -1,1 +1,12 @@
-<p>convertisseur works!</p>
+<p>convertisseur de devises</p>
+<label>montant:</label> <input type="number" [(ngModel)]="montant"> <br/>
+<label>deviseSource :</label> 
+<select [(ngModel)]="deviseSource">
+   <option *ngFor="let d of tabDevises" [ngValue]="d">{{d.name}}</option> 
+</select><br/>
+<label>deviseCible :</label> 
+<select [(ngModel)]="deviseCible">
+   <option *ngFor="let d of tabDevises" [ngValue]="d">{{d.name}}</option> 
+</select><br/>
+<button (click)="onConvertir()">convertir</button><br/>
+montantConverti : {{montantConverti}}
