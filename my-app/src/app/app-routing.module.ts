@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BasicComponent } from './basic/basic.component';
+import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
 import { DeviseComponent } from './devise/devise.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
    { path : "welcome" , component : WelcomeComponent },
    { path : "devise" , component : DeviseComponent },
    { path : "login" , component : LoginComponent },
+   { path : "convertisseur" , component : ConvertisseurComponent },
    { path: '', redirectTo: '/welcome', pathMatch: 'full'}
 ];
 
