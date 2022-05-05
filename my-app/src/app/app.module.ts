@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TogglePanelComponent } from './toggle-panel/toggle-panel.component';
 import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ConvertisseurComponent } from './convertisseur/convertisseur.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
