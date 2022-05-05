@@ -19,6 +19,17 @@ export class ConvertisseurComponent implements OnInit {
     //injection de dépendance par constructeur
   }
 
+  onTestPostTemporaire(){
+       const alea = Math.random();
+       this.deviseService.postDevise$(new Devise("DDK"+alea,"couronneD ",7.7))
+            .subscribe(
+              { next: (deviseSauvagardee)=>{ 
+                      console.log("deviseSauvagardee= "+ JSON.stringify(deviseSauvagardee));
+                      } ,
+                error: (err)=>{ console.log(err); }
+              });
+  }
+
   onConvertir(){
     console.log("appel à onConvertir avec montant="+this.montant)
     if(this.deviseSource == undefined || this.deviseCible == undefined) return;

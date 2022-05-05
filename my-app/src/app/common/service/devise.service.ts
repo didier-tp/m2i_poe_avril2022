@@ -44,6 +44,12 @@ export class DeviseService {
                );
   }
 
+  postDevise$(d :Devise): Observable<Devise>{
+    const url = "http://localhost:8282/devise-api/private/role_admin/devise";
+    return this.http.post<Devise>(url,d /*input envoyé au serveur*/);
+    //this.http.post<TypeReponseRetourneParServeur>(url_web_service , donnee_a_envoyer)
+  }
+
   
 
   constructor(private http :HttpClient) { 
