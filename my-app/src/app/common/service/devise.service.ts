@@ -3,6 +3,16 @@ import { Injectable } from '@angular/core';
 import { delay, map, Observable, of } from 'rxjs';
 import { Devise } from '../data/devise';
 
+class ResultatConversion{
+  constructor(
+       public source : string ="",
+       public target : string ="",
+       public amount : number =0,
+       public result : number =0,
+  ){}
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,9 +38,9 @@ export class DeviseService {
              montant: number ) : Observable<number>{
     const url = `http://localhost:8282/devise-api/public/convert`
          + `?source=${codeDeviseSource}&target=${codeDeviseCible}&amount=${montant}`;
-    return this.http.get<any>(url)
+    return this.http.get<ResultatConversion>(url)
                .pipe(
-                   map((respServer)=>respServer['result'])
+                   map((respServer :ResultatConversion)=>respServer.result)
                );
   }
 
