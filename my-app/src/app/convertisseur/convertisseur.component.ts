@@ -20,7 +20,12 @@ export class ConvertisseurComponent implements OnInit {
   }
 
   onConvertir(){
-    
+    if(this.deviseSource == undefined || this.deviseCible == undefined) return;
+    this.deviseService.convertir$(this.deviseSource.code ,
+                                  this.deviseCible.code,this.montant)
+                      .subscribe({ next: (resConv)=>{ this.montantConverti = resConv; } ,
+                                  error: (err)=>{ console.log(err); }
+                                });
   }
 
   ngOnInit(): void {
