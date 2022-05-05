@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { Devise } from '../data/devise';
 
 @Injectable({
@@ -11,7 +11,8 @@ export class DeviseService {
   //pour dire que ça retourne un Observable
   rechercherDevises$() : Observable< Devise[]> {
       //V1:
-      return of(this.tabDevises);
+      return of(this.tabDevises)
+             .pipe( delay(300)); //simuler un temps d'attente de 300ms pour obtenir la réponse
   }
 
   convertir$(codeDeviseSource:string ,
@@ -22,7 +23,8 @@ export class DeviseService {
     const deviseSource = this.selectDeviseFromCode(codeDeviseSource);
     const deviseCible = this.selectDeviseFromCode(codeDeviseCible);
     if(deviseSource && deviseCible)
-        return of(montant * deviseCible.change / deviseSource.change);
+        return of(montant * deviseCible.change / deviseSource.change)
+               .pipe( delay(300)); //simuler un temps d'attente de 300ms pour obtenir la réponse
     else return of(0);
   }
 
