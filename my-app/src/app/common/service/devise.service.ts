@@ -17,8 +17,13 @@ export class DeviseService {
   convertir$(codeDeviseSource:string ,
              codeDeviseCible:string , 
              montant: number ) : Observable<number>{
-  //V1 (version simulée sans serveur):
-  return of(1.5); //simulation grossière .
+    //V1 (version simulée sans serveur):
+    //return of(1.5); //simulation grossière .
+    const deviseSource = this.selectDeviseFromCode(codeDeviseSource);
+    const deviseCible = this.selectDeviseFromCode(codeDeviseCible);
+    if(deviseSource && deviseCible)
+        return of(montant * deviseCible.change / deviseSource.change);
+    else return of(0);
   }
 
   //V1 (version simulée sans serveur)
@@ -28,6 +33,14 @@ export class DeviseService {
     new Devise("GBP","Livre",0.9),
     new Devise("JPY","Yen",120)
   ];
+
+  selectDeviseFromCode(codeDevise:string):Devise|null{
+    let dev:Devise|null=null;
+    for(const d of this.tabDevises){
+      if(d.code==codeDevise) dev = d;
+    }
+    return dev;
+  }
 
   constructor() { }
 }
