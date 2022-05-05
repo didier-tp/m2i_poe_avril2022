@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../common/data/login';
+import { LoginResponse } from '../common/data/loginResponse';
+import { LoginService } from '../common/service/login.service';
 import { SessionService } from '../common/service/session.service';
 
 @Component({
@@ -15,13 +17,29 @@ export class LoginComponent implements OnInit {
   message /*: string*/ =""; 
 
   onLogin(){
+    /*
     //V1 (sans serveur)
     this.message = "données saisies: " + JSON.stringify(this.login);
     console.log("username="+this.login.username);
-
+    
     this.sessionService.connecte=true;
     this.sessionService.username=this.login.username;
+    */
     //V2: (avec serveur en backend)
+    this.loginService.postLogin$(this.login)
+        .subscribe(
+          { next: (loginResponse)=>{ this.gererReponseLogin(loginResponse); } ,
+            error: (err)=>{ console.log(err); }
+          });
+  }
+
+  gererReponseLogin(loginResponse:LoginResponse){
+    this.message=loginResponse.message;
+    console.log("loginResponse= "+ JSON.stringify(loginResponse));
+    this.sessionService.connecte=loginResponse.status;
+    if(loginResponse.status){
+      this.sessionService.username=loginResponse.username;
+    }
   }
 
   onLogout(){
@@ -29,7 +47,8 @@ export class LoginComponent implements OnInit {
     this.sessionService.connecte=false;
   }
 
-  constructor( public sessionService : SessionService) { }
+  constructor( public sessionService : SessionService,
+               public loginService : LoginService) { }
 
   ngOnInit(): void {
   }

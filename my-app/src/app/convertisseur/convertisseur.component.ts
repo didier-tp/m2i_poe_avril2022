@@ -45,9 +45,18 @@ export class ConvertisseurComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviseService.rechercherDevises$()
-        .subscribe({ next: (tabDev)=>{ this.tabDevises = tabDev; } ,
+        .subscribe({ next: (tabDev)=>{ /*this.tabDevises = tabDev;*/
+                                       this.initAfterFetch(tabDev) } ,
                      error: (err)=>{ console.log(err); }
                    });
+  }
+
+  initAfterFetch(tabDev:Devise[]){
+    this.tabDevises = tabDev;
+    if(this.tabDevises.length>0){
+          this.deviseSource=tabDev[0];
+          this.deviseCible=tabDev[0];
+    }
   }
 
 }

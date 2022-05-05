@@ -1,4 +1,5 @@
-<p>login works!</p>
+<p>login (ex: admin1 , pwdadmin1 , admin</p>
+
 <form #formLogin="ngForm">
    <div class="row form-group">
     <label class="col-sm-3 text-sm-end form-label">username:</label>
@@ -28,4 +29,4 @@
        </div> 
     </div>
 </form>
-{{message}}
+<p [style.color]="sessionService.connecte?'green':'red'">{{message}}</p>
