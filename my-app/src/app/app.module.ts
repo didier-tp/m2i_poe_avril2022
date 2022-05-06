@@ -55,11 +55,11 @@ import { MyAuthInterceptor } from './common/my-auth.interceptor';
     HttpClientModule
   ],
   providers: [
-   /* {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: MyAuthInterceptor,
       multi: true
-      } */
+      } 
   ],
   bootstrap: [AppComponent]
 })
