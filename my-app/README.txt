@@ -1,3 +1,23 @@
+Tp vendredi matin:
+--------
+finir deviseComponent (V1)
+-------
+dans src/app/common/service/devise.service
+ajouter putDevise$() et 
+deleteDevise$(codeDevise :string): Observable<any>
+URL à appeler pour le delete
+ http://localhost:8282/devise-api/private/role_admin/devise/JPY
+
+ng g component deviseV2
+copier/coller depuis deviseComponent (.ts , .html)
++ ajout route et navigation
+----------
+dans DeviseV2Component (.ts)
+on injecte DeviseService dans le constructeur
+coder dans ngOnInit la même chose que dans convertisseur
+et chaque bouton (add , update , delete)
+déclenche d'abord des appels de web service et si ok on synchronise coté angular
+
 Tp jeudi:
 _________
 dans src/app/common/service
