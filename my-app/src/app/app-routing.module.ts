@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BasicComponent } from './basic/basic.component';
 import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
+import { DemoComponent } from './demo/demo.component';
 import { DeviseV2Component } from './devise-v2/devise-v2.component';
 import { DeviseComponent } from './devise/devise.component';
 import { LoginComponent } from './login/login.component';
@@ -9,6 +10,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
    { path : "basic" , component : BasicComponent } ,
+   { path : "demo" , component  : DemoComponent } ,
    { path : "welcome" , component : WelcomeComponent },
    { path : "devise" , component : DeviseComponent },
    { path : "deviseV2" , component : DeviseV2Component },

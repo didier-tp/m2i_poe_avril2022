@@ -19,6 +19,11 @@ import { TogglePanelComponent } from './toggle-panel/toggle-panel.component';
 import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeviseV2Component } from './devise-v2/devise-v2.component';
+import { ZzComponent } from './demo/zz/zz.component';
+import { ListProdComponent } from './demo/list-prod/list-prod.component';
+import { SeuilComponent } from './demo/seuil/seuil.component';
+import { RegletteComponent } from './demo/reglette/reglette.component';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { DeviseV2Component } from './devise-v2/devise-v2.component';
     LoginComponent,
     TogglePanelComponent,
     ConvertisseurComponent,
-    DeviseV2Component
+    DeviseV2Component,
+    ZzComponent,
+    SeuilComponent,
+    ListProdComponent,
+    RegletteComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
