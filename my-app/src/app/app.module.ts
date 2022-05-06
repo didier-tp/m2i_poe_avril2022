@@ -18,6 +18,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TogglePanelComponent } from './toggle-panel/toggle-panel.component';
 import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DeviseV2Component } from './devise-v2/devise-v2.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     DeviseComponent,
     LoginComponent,
     TogglePanelComponent,
-    ConvertisseurComponent
+    ConvertisseurComponent,
+    DeviseV2Component
   ],
   imports: [
     BrowserModule,

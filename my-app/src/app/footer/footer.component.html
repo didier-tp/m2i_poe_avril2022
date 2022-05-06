@@ -1,4 +1,6 @@
-<p class="piedPage">{{today | date:"yyyy/MM/dd"}}
+<!-- <p class="piedPage"> -->
+<p [style.backgroundColor]="preferencesService.couleurFond">
+  {{today | date:"yyyy/MM/dd"}}
   couleurFond: <select [(ngModel)]="preferencesService.couleurFond">
    <option *ngFor="let c of tabCouleurs">{{c}}</option> 
 </select>
