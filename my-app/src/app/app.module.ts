@@ -17,13 +17,14 @@ import { LoginComponent } from './login/login.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TogglePanelComponent } from './toggle-panel/toggle-panel.component';
 import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DeviseV2Component } from './devise-v2/devise-v2.component';
 import { ZzComponent } from './demo/zz/zz.component';
 import { ListProdComponent } from './demo/list-prod/list-prod.component';
 import { SeuilComponent } from './demo/seuil/seuil.component';
 import { RegletteComponent } from './demo/reglette/reglette.component';
 import { DemoComponent } from './demo/demo.component';
+import { MyAuthInterceptor } from './common/my-auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,13 @@ import { DemoComponent } from './demo/demo.component';
     TabsModule.forRoot(),
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+   /* {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyAuthInterceptor,
+      multi: true
+      } */
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

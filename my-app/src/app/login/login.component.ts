@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     console.log("loginResponse= "+ JSON.stringify(loginResponse));
     this.sessionService.connecte=loginResponse.status;
     if(loginResponse.status){
+      sessionStorage.setItem("token",loginResponse.token?loginResponse.token:"null");
       this.sessionService.username=loginResponse.username;
     }
   }
