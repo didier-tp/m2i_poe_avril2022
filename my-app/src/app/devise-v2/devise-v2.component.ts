@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { Devise } from '../common/data/devise';
 import { DeviseService } from '../common/service/devise.service';
 
@@ -8,10 +10,6 @@ import { DeviseService } from '../common/service/devise.service';
   styleUrls: ['./devise-v2.component.scss']
 })
 export class DeviseV2Component implements OnInit {
-
-  cloneDevise(d:Devise){
-    return JSON.parse(JSON.stringify(d));
-  }
 
   tabDevises : Devise[] = [];
 
@@ -24,6 +22,21 @@ export class DeviseV2Component implements OnInit {
 
   mode : "newOne" | "existingOne" = "newOne";
 
+  cloneDevise(d:Devise){
+    return JSON.parse(JSON.stringify(d));
+  }
+
+  messageFromError(err : HttpErrorResponse , myMsg /*: string*/ = ""){
+    
+    if (err.error instanceof Error) {
+      console.log("Client-side error occured." + JSON.stringify(err));
+      this.message = myMsg;
+      } else {
+      console.log("Server-side error occured : " + JSON.stringify(err));
+      this.message = myMsg + " (status="+ err.status + ":" + err.statusText + ") :" + err.error.message ; 
+      }
+  }
+
   onNew(){
     this.mode="newOne";
     this.selectedDevise=undefined;
@@ -35,8 +48,7 @@ export class DeviseV2Component implements OnInit {
     .subscribe(
      { next: (savedDevise)=>{ this.message="devise ajoutée";
                    this.addClientSide(savedDevise); } ,
-      error: (err)=>{ this.message="echec post"
-                     console.log(err); }
+      error: (err)=>{ this.messageFromError(err,"echec post"); }
    });
   }
 
@@ -51,8 +63,7 @@ export class DeviseV2Component implements OnInit {
              .subscribe(
               { next: ()=>{ this.message="devise bien supprimée";
                             this.deleteClientSide(); } ,
-               error: (err)=>{ this.message="echec suppression"
-                              console.log(err); }
+               error: (err)=>{ this.messageFromError(err,"echec suppression"); }
             });
     }
   }
@@ -73,8 +84,7 @@ export class DeviseV2Component implements OnInit {
     .subscribe(
      { next: (updatedDevise)=>{ this.message="devise bien mise à jour";
                    this.updateClientSide(updatedDevise); } ,
-      error: (err)=>{ this.message="echec update (put)"
-                     console.log(err); }
+      error: (err)=>{ this.messageFromError(err,"echec update (put)");}
    });
   }
 
@@ -112,9 +122,12 @@ export class DeviseV2Component implements OnInit {
 
    ngOnInit(): void {
     this.deviseService.rechercherDevises$()
+        .pipe(
+          map( (tabDev) => tabDev.sort((d1,d2)=>d1.change - d2.change) )
+        )
         .subscribe({ next: (tabDev)=>{ /*this.tabDevises = tabDev;*/
                                        this.initAfterFetch(tabDev) } ,
-                     error: (err)=>{ console.log(err); }
+                     error: (err)=>{ this.messageFromError(err,"echec rechercherDevises (get)"); }
                    });
   }
 

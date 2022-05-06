@@ -33,12 +33,12 @@ export class ProduitService {
 
 
   private tabProduit = [
-    { numero : 5 , label : "produit 1" , prix : 120 } ,
+    { numero : 5 , label : "produit 5" , prix : 120 } ,
     { numero : 1 , label : "produit 1" , prix : 50 } ,
     { numero : 2 , label : "produit 2" , prix : 30 } ,
     { numero : 3 , label : "produit 3" , prix : 80 } ,
     { numero : 4 , label : "produit 4" , prix : 500 },
-    { numero : 6 , label : "produit 4" , prix : 20 },
+    { numero : 6 , label : "produit 6" , prix : 20 },
     ]
 
   public rechercherNombreProduitSimu$(prixMaxi : number) : Observable<number> { 
