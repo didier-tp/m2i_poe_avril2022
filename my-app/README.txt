@@ -1,3 +1,11 @@
+npm install cypress --save-dev
+npx cypress open (premier lancement) 
+on ajoute un fichier testAdd.spec.js dans le répertoire
+cypress/integration
+
+ng serve ou ng serve --proxy-config proxy.conf.json
+npx cypress open (et on choisi le fichier le test)
+==========================
 ng add @angular/material
 dans app.module.ts ajouter
 import { MatTabsModule} from '@angular/material/tabs';
