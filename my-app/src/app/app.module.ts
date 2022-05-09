@@ -25,6 +25,7 @@ import { SeuilComponent } from './demo/seuil/seuil.component';
 import { RegletteComponent } from './demo/reglette/reglette.component';
 import { DemoComponent } from './demo/demo.component';
 import { MyAuthInterceptor } from './common/my-auth.interceptor';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MyAuthInterceptor } from './common/my-auth.interceptor';
     SeuilComponent,
     ListProdComponent,
     RegletteComponent,
-    DemoComponent
+    DemoComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,
