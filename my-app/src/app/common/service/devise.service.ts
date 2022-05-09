@@ -18,7 +18,8 @@ class ResultatConversion{
 })
 export class DeviseService {
 
-  baseUrl = "http://localhost:8282/devise-api";
+  //baseUrl = "http://localhost:8282/devise-api"; // sans ng serve --proxy-config proxy.conf.json
+  baseUrl = "devise-api"; // avec ng serve --proxy-config proxy.conf.json
   publicBaseUrl = `${this.baseUrl}/public`;
   privateBaseUrl = `${this.baseUrl}/private/role_admin`;
 
