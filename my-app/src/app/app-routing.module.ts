@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { BasicComponent } from './basic/basic.component';
 import { CalculatriceComponent } from './basic/calculatrice/calculatrice.component';
 import { TvaComponent } from './basic/tva/tva.component';
+import { Gardien } from './common/gardien';
 import { ConvertisseurComponent } from './convertisseur/convertisseur.component';
 import { DemoComponent } from './demo/demo.component';
 import { DeviseV2Component } from './devise-v2/devise-v2.component';
 import { DeviseComponent } from './devise/devise.component';
 import { LoginComponent } from './login/login.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
@@ -21,8 +23,9 @@ const routes: Routes = [
    { path : "demo" , component  : DemoComponent } ,
    { path : "welcome" , component : WelcomeComponent },
    { path : "devise" , component : DeviseComponent },
-   { path : "deviseV2" , component : DeviseV2Component },
+   { path : "deviseV2" , component : DeviseV2Component, canActivate : [Gardien] },
    { path : "login" , component : LoginComponent },
+   { path : "not-authorized" , component : NotAuthorizedComponent },
    { path : "convertisseur" , component : ConvertisseurComponent },
    { path: '', redirectTo: '/welcome', pathMatch: 'full'}
 ];
