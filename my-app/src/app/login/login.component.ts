@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login } from '../common/data/login';
 import { LoginResponse } from '../common/data/loginResponse';
 import { LoginService } from '../common/service/login.service';
@@ -45,6 +46,21 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  onNavigate(){
+    /*une fois avoir ajouté _router dans les injections de dépendances 
+    (du constructeur de cette classe).
+    On va déclencher ici (par programmation)
+    une navigation vers /deviseV2
+    */
+    const link= ["/deviseV2"];
+    if(this.sessionService.connecte){
+       this._router.navigate(link);
+      //ou bien this._router.navigateByUrl("/deviseV2");
+    }else{
+      this.message="pas de login, pas de deviseV2"
+    }
+  }
+
   onLogout(){
     this.message = "logout done (no more connected)";
     this.sessionService.connecte=false;
@@ -52,7 +68,8 @@ export class LoginComponent implements OnInit {
   }
 
   constructor( public sessionService : SessionService,
-               public loginService : LoginService) { }
+               public loginService : LoginService,
+               private _router : Router) { }
 
   ngOnInit(): void {
   }
