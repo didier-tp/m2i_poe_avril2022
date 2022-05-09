@@ -1,20 +1,5 @@
 <h3>basic</h3>
-<div class="row">
-   <div class="col-sm-4">
-        <a routerLink="/basic/tva" >tva</a><br/>
-        <a routerLink="/basic/calculatrice/simple" >calculatrice simple</a><br/>
-        <a routerLink="/basic/calculatrice/sophistiquee" >calculatrice sophistiquee</a><br/>
-   </div>
-   <div class="col-sm-6">
-       <!-- sous partie variable du compant basic (switch de sous composants) -->
-       <router-outlet></router-outlet>
-   </div>
-</div>
 
-
-
-
-<!--
 <toggle-panel titre="calculatrice">
     <app-calculatrice></app-calculatrice>
 </toggle-panel>
@@ -35,6 +20,6 @@
         <app-conversion></app-conversion>
     </tab>
 </tabset>
--->
+
 
  

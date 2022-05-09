@@ -1,6 +1,8 @@
 <p>calculatrice</p>
 <label>a:</label> <input type="number" [(ngModel)]="a" /> <br/>
 <label>b:</label> <input type="number" [(ngModel)]="b" /> <br/>
-<button (click)="onAddition()">additionner (a+b)</button> <br/>
+<button (click)="onAddition()">additionner (a+b)</button> &nbsp; 
 <button (click)="onSoustraction()">soustraire (a-b)</button> <br/>
+<button [style.visibility]="modeChoisi=='sophistiquee'?'visible':'hidden'" (click)="onMultiplication()">multiplier (a*b)</button> &nbsp; 
+<button [style.visibility]="modeChoisi=='sophistiquee'?'visible':'hidden'" (click)="onDivision()">diviser (a/b)</button> <br/>
 res: <span [style.color]="res>=0?'blue':'red'">{{res}}</span>

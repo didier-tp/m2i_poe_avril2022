@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-calculatrice',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculatrice.component.scss']
 })
 export class CalculatriceComponent implements OnInit {
+
+  modeChoisi : "simple" | "sophistiquee" ="simple";
 
    a /*: number*/ =0;
    b /*: number*/ =0;
@@ -19,7 +22,22 @@ export class CalculatriceComponent implements OnInit {
     this.res=Number(this.a) - Number(this.b);
   }
 
-  constructor() { }
+  onMultiplication(){
+    this.res=Number(this.a) * Number(this.b);
+  }
+
+  onDivision(){
+    this.res=Number(this.a) / Number(this.b);
+  }
+
+  constructor(route : ActivatedRoute) { 
+    route.params.subscribe(
+      (params: Params)=> {
+        this.modeChoisi = params['mode'];
+      }
+    )
+    //NB:  { path: 'calculatrice/:mode', ... } dans app-routing.module.ts
+  }
 
   ngOnInit(): void {
   }

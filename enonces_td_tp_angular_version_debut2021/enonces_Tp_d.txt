@@ -133,7 +133,7 @@ Premiere version:
      ou <app-tva> et <app-calculatrice>
 - ajouter dans basic.component.html
    <a routerLink="/basic/calculatrice" >calculatrice</a><br/>
-   <a routerLink="/basic/calculatrice" >calculatrice</a><br/>
+   <a routerLink="/basic/tva" >tva</a><br/>
 - ajuster un bloc de configuration de ce type dans app-routing.module.ts:
  { path: 'basic', component: BasicComponent ,
  children: [
