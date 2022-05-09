@@ -40,12 +40,15 @@ export class LoginComponent implements OnInit {
     if(loginResponse.status){
       sessionStorage.setItem("token",loginResponse.token?loginResponse.token:"null");
       this.sessionService.username=loginResponse.username;
+    }else{
+      sessionStorage.setItem("token","null");
     }
   }
 
   onLogout(){
     this.message = "logout done (no more connected)";
     this.sessionService.connecte=false;
+    sessionStorage.setItem("token","null");
   }
 
   constructor( public sessionService : SessionService,
