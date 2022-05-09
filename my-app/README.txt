@@ -1,3 +1,14 @@
+ng add @angular/material
+dans app.module.ts ajouter
+import { MatTabsModule} from '@angular/material/tabs';
+et  imports: [
+   ...,
+    MatTabsModule
+  ],
+pour pouvoir utiliser les balises
+<mat-tab-group> et  <mat-tab label="onglet1">
+dans welcome.component.html ou autre
+===============
 Tp vendredi matin:
 --------
 finir deviseComponent (V1)

@@ -26,6 +26,8 @@ import { RegletteComponent } from './demo/reglette/reglette.component';
 import { DemoComponent } from './demo/demo.component';
 import { MyAuthInterceptor } from './common/my-auth.interceptor';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     AppRoutingModule,
     FormsModule,
     TabsModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [
     {
