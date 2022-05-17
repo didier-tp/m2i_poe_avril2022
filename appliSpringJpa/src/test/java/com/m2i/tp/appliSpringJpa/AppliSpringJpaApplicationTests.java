@@ -1,7 +1,14 @@
 package com.m2i.tp.appliSpringJpa;
 
 import java.util.List;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +27,14 @@ class AppliSpringJpaApplicationTests {
 	//dans ce projet , seule la classe DaoEmployeJpa correspond à ce critère
 	private DaoEmploye daoEmploye;
 	
+	private static Validator validator;  //initialized by @BeforeAll
+	
+	@BeforeAll
+	protected static void initValidator(){
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		validator = factory.getValidator();
+	}
+	
 	
 	@Test 
 	public void testFindEmployeWithNameBeginBy() {
@@ -30,14 +45,40 @@ class AppliSpringJpaApplicationTests {
 		}
 	}
 	
+	protected <T> void validateEntity(T entity) {
+		Set<ConstraintViolation<T>> violations = validator.validate(entity);
+		for (ConstraintViolation<T> violation : violations) {
+		    //log.error("*** validation error: " + violation.getMessage()); 
+			System.err.println("*** validation error: " + violation.getMessage()); 
+		}
+	}
+	
+	protected <T> void validateEntityThrowingException(T entity) {
+		Set<ConstraintViolation<T>> violations = validator.validate(entity);
+		StringBuilder sb = new StringBuilder();
+		for (ConstraintViolation<T> violation : violations) {
+		    //log.error("*** validation error: " + violation.getMessage()); 
+			System.err.println("*** validation error: " + violation.getMessage()); 
+			sb.append(violation.getMessage()+ " ; ");
+		}
+		if(violations.size()>0)
+			throw new RuntimeException("entity is not valid: " + sb.toString());
+	}
+	
 	@Test 
 	public void testAvecSpring() {
 		//séquence de test idéale:
 		//1. créer une nouvelle chose
 		
+		Employe invalidEmp1 = new Employe(null,null,null,"0102030405","jean.BonSansArobasxyz.com","login","p");
+		validateEntity(invalidEmp1);
+		//validateEntityThrowingException(invalidEmp1);
+		
 		Employe emp1 = new Employe(null,"prenom1","Nom","0102030405","jean.Bon@xyz.com","login","pwd");
 		Adresse adr1 = new Adresse(null,"12 rue Elle","75001","Par ici");
 		emp1.setAdressePrincipale(adr1);
+		
+		validateEntity(emp1);
 		
 		daoEmploye.insertNew(emp1);
 		Long idEmp = emp1.getEmpId(); //clef primaire auto incrémentée du nouvel employé ajouté en base

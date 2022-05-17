@@ -18,6 +18,7 @@ import com.m2i.tp.appliSpringJpa.entity.Employe;
 import com.m2i.tp.appliSpringJpa.entity.Phase;
 import com.m2i.tp.appliSpringJpa.entity.Projet;
 
+
 @SpringBootTest
 class TestProjetEtPhase {
 
@@ -30,6 +31,7 @@ class TestProjetEtPhase {
 	
 	@Autowired 
 	private DaoEmploye daoEmploye;
+	
 	
 	public static Date dateFromString(String sDate) {
 		Date d=null;
